@@ -44,6 +44,9 @@ class PositionView extends View
 
     protected const EMPTY_SQUARE_SYMBOL = ' ';
 
+    /**
+     * @inheritdoc
+     */
     public function render(array $params = []): string
     {
         $result = '';

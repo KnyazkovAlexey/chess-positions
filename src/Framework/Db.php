@@ -24,6 +24,11 @@ class Db
         //todo: error handling
     }
 
+    /**
+     * @param string $sql
+     * @param array $data
+     * @return bool
+     */
     public function execute(string $sql, array $data = []): bool
     {
         $sth = $this->dbh->prepare($sql);
@@ -35,6 +40,12 @@ class Db
         return $result;
     }
 
+    /**
+     * @param string $sql
+     * @param array $data
+     * @param string|null $className
+     * @return array
+     */
     public function query(string $sql, array $data = [], ?string $className = null)
     {
         $sth = $this->dbh->prepare($sql);

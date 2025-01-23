@@ -10,6 +10,10 @@ use Framework\Task;
 
 class ParsePositionTask extends Task
 {
+    /**
+     * @param string $position
+     * @return ChessboardDto
+     */
     public function run(string $position): ChessboardDto
     {
         $filledSquares = array_flip(str_split($position));

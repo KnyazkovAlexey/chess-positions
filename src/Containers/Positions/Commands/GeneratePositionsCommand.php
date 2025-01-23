@@ -14,7 +14,10 @@ class GeneratePositionsCommand extends Command
     {
         $this->db = app(Db::class);
     }
-    
+
+    /**
+     * @inheritdoc
+     */
     public function run(Request $request): void
     {
         $this->createTable();

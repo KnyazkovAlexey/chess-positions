@@ -23,6 +23,9 @@ class GetPositionCommand extends Command
         $this->positionView = app(PositionView::class);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function run(Request $request): void
     {
         if (!$this->requestValidator->validate($request->all())) {

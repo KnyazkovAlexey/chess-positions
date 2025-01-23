@@ -15,6 +15,10 @@ abstract class Repository
         $this->db = app(Db::class);
     }
 
+    /**
+     * @param int $id
+     * @return Entity|null
+     */
     public function findById(int $id): ?Entity
     {
         $result = $this->db->query(

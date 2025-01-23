@@ -4,6 +4,10 @@ namespace Framework\Console;
 
 class Router
 {
+    /**
+     * @param Request $request
+     * @return Command|null
+     */
     public function getCommand(Request $request): ?Command
     {
         $actionName = $request->getParam('action');
@@ -26,6 +30,9 @@ class Router
         return null;
     }
 
+    /**
+     * @return string[]
+     */
     protected function getCommandsNamespaces(): array
     {
         //todo: config

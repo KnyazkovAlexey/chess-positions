@@ -4,5 +4,9 @@ namespace Framework;
 
 abstract class View
 {
+    /**
+     * @param array $params
+     * @return string
+     */
     abstract public function render(array $params = []): string;
 }

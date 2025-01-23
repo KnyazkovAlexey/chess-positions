@@ -4,12 +4,20 @@ namespace Framework;
 
 abstract class Entity
 {
-    public function __get($name)
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function __get(string $name): mixed
     {
         return $this->$name; //todo: only for DB-attributes
     }
 
-    public function __set($name, $value)
+    /**
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set(string $name, mixed $value): void
     {
         $this->$name = $value; //todo: only for DB-attributes
     }

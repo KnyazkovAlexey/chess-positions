@@ -4,6 +4,10 @@ namespace Framework\Console;
 
 class Request
 {
+    /**
+     * @param string $name
+     * @return mixed
+     */
     public function getParam(string $name): mixed
     {
         foreach ($_SERVER['argv'] as $arg) {
@@ -15,6 +19,10 @@ class Request
         return null;
     }
 
+    /**
+     * @param string $name
+     * @return int|null
+     */
     public function getInt(string $name): ?int
     {
         $param = $this->getParam($name);
@@ -22,30 +30,25 @@ class Request
         return !empty($param) ? (int)$param : null;
     }
 
+    /**
+     * @return array
+     */
     public function all(): array
     {
         $params = [];
-        $currentOption = null;
 
         foreach ($_SERVER['argv'] as $arg) {
             if (strpos($arg, '-') === 0) {
                 if (strpos($arg, '--') === 0) {
-                    // Длинная опция
                     $parts = explode('=', $arg, 2);
                     $option = substr($parts[0], 2);
                     $value = count($parts) > 1 ? $parts[1] : true;
                 } else {
-                    // Короткая опция
                     $option = substr($arg, 1);
                     $value = true;
                 }
 
                 $params[$option] = $value;
-                $currentOption = $option;
-            } elseif ($currentOption !== null) {
-                // Значение для предыдущей опции
-                $params[$currentOption] = $arg;
-                $currentOption = null;
             }
         }
 
