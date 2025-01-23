@@ -22,14 +22,14 @@
 <pre>
 cp .env.example .env
 docker-compose up -d
-docker-compose run --rm app composer install
-docker-compose run --rm app php index.php --action=generate-positions
-docker-compose run --rm app php index.php --action=get-position --id=1
+docker-compose exec app composer install
+docker-compose exec app php index.php --action=generate-positions
+docker-compose exec app php index.php --action=get-position --id=1
 </pre>
 
 <h2>Тесты</h2>
 <pre>
-docker-compose run --rm app ./vendor/bin/phpunit src/Containers/Positions/Tests
+docker-compose exec app ./vendor/bin/phpunit src/Containers/Positions/Tests
 </pre>
 
 <h2>Пояснения</h2>
