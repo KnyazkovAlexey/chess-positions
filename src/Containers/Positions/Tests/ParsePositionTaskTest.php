@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Containers\Positions\Tasks\ParsePositionTask;
-use Containers\Positions\Constants\Position;
+use Containers\Positions\Enums\FigureState;
 
 final class ParsePositionTaskTest extends TestCase
 {
@@ -37,8 +37,8 @@ final class ParsePositionTaskTest extends TestCase
     {
         $positions = [];
 
-        $characters = Position::SCUARES_CODES;
-        $characters[] = Position::EATEN_CODE;
+        $characters = FigureState::getSquaresStates();
+        $characters[] = FigureState::EATEN->value;
 
         foreach (range(1, 10) as $i) {
             shuffle($characters);

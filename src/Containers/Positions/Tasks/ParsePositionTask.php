@@ -2,7 +2,7 @@
 
 namespace Containers\Positions\Tasks;
 
-use Containers\Positions\Constants\Position;
+use Containers\Positions\Enums\FigureState;
 use Containers\Positions\Dto\ChessboardDto;
 use Containers\Positions\Dto\FigureDto;
 use Containers\Positions\Dto\SquareDto;
@@ -19,7 +19,7 @@ class ParsePositionTask extends Task
         $filledSquares = array_flip(str_split($position));
 
         $squares = [];
-        foreach (Position::SCUARES_CODES as $squareIndex => $squareCode) {
+        foreach (FigureState::getSquaresStates() as $squareIndex => $squareCode) {
             $figureIndex = $filledSquares[$squareCode] ?? null;
 
             $figure = isset($figureIndex) ? new FigureDto([
